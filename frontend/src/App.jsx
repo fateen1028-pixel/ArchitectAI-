@@ -3,6 +3,9 @@ import {
   Routes,
 } from "react-router";
 
+import DesignWorkspacePage
+  from "./pages/DesignWorkspacePage.jsx";
+
 import AppLayout
   from "./components/AppLayout.jsx";
 import ChallengeDetailPage
@@ -45,6 +48,16 @@ export default function App() {
                   + ":lessonSlug"
               }
               element={<LessonPage />}
+          />
+
+          <Route
+              path="challenges/:challengeSlug/workspace"
+              element={<DesignWorkspacePage />}
+          />
+
+          <Route
+              path="challenges/:challengeSlug"
+              element={<ChallengeDetailPage />}
           />
 
           <Route

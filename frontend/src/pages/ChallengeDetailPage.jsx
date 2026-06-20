@@ -169,21 +169,18 @@ export default function ChallengeDetailPage() {
                     {challenge.description}
                 </p>
 
-                <button
-                    type="button"
-                    disabled
-                    title="The design workspace is the next checkpoint"
+                <Link
+                    to={`/challenges/${challenge.slug}/workspace`}
                     className="
-            mt-8 inline-flex cursor-not-allowed
-            items-center gap-2 rounded-xl
-            bg-white/10 px-5 py-3
-            text-sm font-semibold
-            text-zinc-500
-          "
+    mt-8 inline-flex items-center gap-2
+    rounded-xl bg-white px-5 py-3
+    text-sm font-semibold text-black
+    transition hover:bg-zinc-200
+  "
                 >
                     <Play size={16} />
                     Open design workspace
-                </button>
+                </Link>
             </header>
 
             <div
