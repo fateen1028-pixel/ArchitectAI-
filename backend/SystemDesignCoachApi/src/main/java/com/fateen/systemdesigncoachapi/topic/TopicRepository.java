@@ -11,4 +11,6 @@ public interface TopicRepository
     List<Topic> findAllByOrderByDisplayOrderAsc();
 
     Optional<Topic> findBySlug(String slug);
+
+    boolean existsBySlug(String slug);
 }
