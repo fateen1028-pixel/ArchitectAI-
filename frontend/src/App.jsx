@@ -23,6 +23,9 @@ import TopicLessonsPage
 import TopicsPage
   from "./pages/TopicsPage.jsx";
 
+import AttemptFeedbackPage
+    from "./pages/AttemptFeedbackPage.jsx";
+
 export default function App() {
   return (
       <Routes>
@@ -60,6 +63,8 @@ export default function App() {
               element={<ChallengeDetailPage />}
           />
 
+
+
           <Route
               path="challenges"
               element={<ChallengesPage />}
@@ -69,6 +74,11 @@ export default function App() {
               path="challenges/:challengeSlug"
               element={<ChallengeDetailPage />}
           />
+
+            <Route
+                path="attempts/:attemptId/feedback"
+                element={<AttemptFeedbackPage />}
+            />
 
           <Route
               path="*"

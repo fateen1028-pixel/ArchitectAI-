@@ -83,4 +83,21 @@ export const api = {
             },
         );
     },
+
+    getAttempt(attemptId) {
+        return request(
+            `/api/attempts/${encodeURIComponent(attemptId)}`,
+        );
+    },
+
+    evaluateAttempt(attemptId) {
+        return request(
+            `/api/attempts/${
+                encodeURIComponent(attemptId)
+            }/evaluate`,
+            {
+                method: "POST",
+            },
+        );
+    },
 };

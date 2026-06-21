@@ -1,4 +1,4 @@
-package com.fateen.systemdesigncoach.attempt.dto;
+package com.fateen.systemdesigncoachapi.attempt.dto;
 
 public record MissingExpectedComponent(
         String componentType,

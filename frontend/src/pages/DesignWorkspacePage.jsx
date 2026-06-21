@@ -5,29 +5,38 @@ import {
     RotateCcw,
     Save,
 } from "lucide-react";
+
 import {
     Link,
+    useNavigate,
     useParams,
 } from "react-router";
+
 import {
     useCallback,
     useEffect,
     useState,
 } from "react";
+
 import {
     useEdgesState,
     useNodesState,
 } from "@xyflow/react";
 
 import { api } from "../api/apiClient.js";
+
 import ErrorState
     from "../components/ErrorState.jsx";
+
 import LoadingState
     from "../components/LoadingState.jsx";
+
 import ArchitectureCanvas
     from "../features/workspace/ArchitectureCanvas.jsx";
+
 import ComponentPalette
     from "../features/workspace/ComponentPalette.jsx";
+
 import {
     getComponentDefinition,
 } from "../features/workspace/componentCatalog.js";
@@ -126,6 +135,8 @@ export default function DesignWorkspacePage() {
     const [submissionResult, setSubmissionResult] =
         useState(null);
 
+    const navigate = useNavigate();
+
     /*
      * These must be declared before submitAttempt.
      *
@@ -183,7 +194,9 @@ export default function DesignWorkspacePage() {
                 payload,
             );
 
-            setSubmissionResult(result);
+            navigate(
+                `/attempts/${result.id}/feedback`,
+            );
         } catch (requestError) {
             setSubmissionError(
                 requestError.message

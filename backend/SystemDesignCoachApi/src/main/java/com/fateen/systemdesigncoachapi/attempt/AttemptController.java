@@ -12,11 +12,17 @@ import java.util.UUID;
 public class AttemptController {
 
     private final AttemptService attemptService;
+    private final AttemptEvaluationService
+            attemptEvaluationService;
 
     public AttemptController(
-            AttemptService attemptService
+            AttemptService attemptService,
+            AttemptEvaluationService
+                    attemptEvaluationService
     ) {
         this.attemptService = attemptService;
+        this.attemptEvaluationService =
+                attemptEvaluationService;
     }
 
     @PostMapping(
@@ -51,6 +57,20 @@ public class AttemptController {
     ) {
         return ResponseEntity.ok(
                 attemptService.getAttempt(attemptId)
+        );
+    }
+
+    @PostMapping(
+            "/api/attempts/{attemptId}/evaluate"
+    )
+    public ResponseEntity<AttemptDetailResponse>
+    evaluateAttempt(
+            @PathVariable UUID attemptId
+    ) {
+        return ResponseEntity.ok(
+                attemptEvaluationService.evaluate(
+                        attemptId
+                )
         );
     }
 }

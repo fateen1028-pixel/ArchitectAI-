@@ -1,6 +1,6 @@
 package com.fateen.systemdesigncoachapi.attempt;
 
-import com.fateen.systemdesigncoach.attempt.dto.MissingExpectedComponent;
+import com.fateen.systemdesigncoachapi.attempt.dto.MissingExpectedComponent;
 import com.fateen.systemdesigncoachapi.attempt.dto.*;
 import com.fateen.systemdesigncoachapi.challenge.Challenge;
 import com.fateen.systemdesigncoachapi.challenge.ExpectedComponent;

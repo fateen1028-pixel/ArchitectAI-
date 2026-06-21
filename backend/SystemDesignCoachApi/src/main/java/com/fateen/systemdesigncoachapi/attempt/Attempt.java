@@ -2,6 +2,7 @@ package com.fateen.systemdesigncoachapi.attempt;
 
 import com.fateen.systemdesigncoachapi.challenge.Challenge;
 import jakarta.persistence.*;
+import lombok.Getter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import tools.jackson.databind.JsonNode;
@@ -41,6 +42,7 @@ public class Attempt {
     )
     private String explanation;
 
+    @Getter
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(
             name = "public_checks_json",
@@ -49,6 +51,7 @@ public class Attempt {
     )
     private tools.jackson.databind.JsonNode publicChecksJson;
 
+    @Getter
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(
             name = "internal_checks_json",
@@ -57,6 +60,7 @@ public class Attempt {
     )
     private tools.jackson.databind.JsonNode internalChecksJson;
 
+    @Getter
     @Enumerated(EnumType.STRING)
     @Column(
             nullable = false,
@@ -64,8 +68,10 @@ public class Attempt {
     )
     private AttemptStatus status;
 
+    @Getter
     private Integer score;
 
+    @Getter
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(
             name = "feedback_json",
@@ -73,6 +79,7 @@ public class Attempt {
     )
     private tools.jackson.databind.JsonNode feedbackJson;
 
+    @Getter
     @Column(
             name = "created_at",
             nullable = false,
@@ -147,23 +154,9 @@ public class Attempt {
         return explanation;
     }
 
-    public tools.jackson.databind.JsonNode getPublicChecksJson() {
-        return publicChecksJson;
+    public void markEvaluating() {
+        this.status = AttemptStatus.EVALUATING;
     }
 
-    public AttemptStatus getStatus() {
-        return status;
-    }
 
-    public Integer getScore() {
-        return score;
-    }
-
-    public tools.jackson.databind.JsonNode getFeedbackJson() {
-        return feedbackJson;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
 }

@@ -17,14 +17,27 @@ spring:
       ddl-auto: validate
 
     properties:
-      hibernate:
-        format_sql: true
+      "hibernate.format_sql": true
+      "hibernate.type.json_format_mapper": org.hibernate.type.format.jackson.Jackson3JsonFormatMapper
 
   flyway:
     enabled: true
 
-  app:
-    frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  ai:
+    model:
+      chat: google-genai
+
+    google:
+      genai:
+        chat:
+          model: gemini-2.5-flash
+          response-mime-type: application/json
+          temperature: 0.1
+          max-output-tokens: 6000
+          thinking-budget: 0
+
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
 
 logging:
   level:
